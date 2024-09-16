@@ -1,0 +1,42 @@
+<!-- src/app/cotizacion/cotizacion.component.html -->
+<p><strong>Transportista:</strong> {{ cotizacion.transportista }}</p>
+<p><strong>Calificación:</strong> {{ cotizacion.calificacion }} ★</p>
+<p><strong>Fecha de Retiro:</strong> {{ cotizacion.fechaRetiro | date }}</p>
+<p><strong>Fecha de Entrega:</strong> {{ cotizacion.fechaEntrega | date }}</p>
+<p><strong>Importe del Viaje:</strong> ${{ cotizacion.importeViaje }}</p>
+
+<!-- Combo de selección para la forma de pago -->
+<p>
+  <strong>Forma de Pago:</strong>
+  <select [(ngModel)]="cotizacion.formaPago">
+    <option value="" disabled>Seleccione una forma de pago</option>
+    <option *ngFor="let forma of formasPago" [value]="forma">{{ forma }}</option>
+  </select>
+</p>
+
+<!-- Campos adicionales -->
+<div *ngIf="cotizacion.formaPago === 'Tarjeta de Crédito'">
+  <p><strong>Número de Tarjeta:</strong>
+    <input type="text" [(ngModel)]="cotizacion.numeroTarjeta" placeholder="Número de Tarjeta">
+  </p>
+  <p><strong>PIN:</strong>
+    <input type="password" [(ngModel)]="cotizacion.pin" placeholder="PIN">
+  </p>
+</div>
+
+<div *ngIf="cotizacion.formaPago === 'Transferencia Bancaria' || cotizacion.formaPago === 'PayPal'">
+  <p><strong>Nombre Completo:</strong>
+    <input type="text" [(ngModel)]="cotizacion.nombreCompleto" placeholder="Nombre Completo">
+  </p>
+  <p><strong>Tipo de Documento:</strong>
+    <input type="text" [(ngModel)]="cotizacion.tipoDocumento" placeholder="Tipo de Documento">
+  </p>
+  <p><strong>Número de Documento:</strong>
+    <input type="text" [(ngModel)]="cotizacion.numeroDocumento" placeholder="Número de Documento">
+  </p>
+</div>
+
+<!-- Botón Aceptar -->
+<p>
+  <button (click)="onSubmit()">Aceptar</button>
+</p>

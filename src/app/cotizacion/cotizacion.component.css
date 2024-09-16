@@ -1,0 +1,14 @@
+/* src/app/cotizacion/cotizacion.component.css */
+.cotizacion-container {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .cotizacion-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
